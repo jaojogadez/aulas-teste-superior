@@ -1,0 +1,26 @@
+const express = require('express');
+const path = require('path');
+const server = express();
+
+// Retorno da requisição no console
+/*server.get('/teste', (req, res) => {
+  console.log('Estamos no caminho certo');
+});*/
+
+// Retorno da requisição no navegador
+/*server.get('/teste', (req, res) => {
+  res.sendFile(path.join(__dirname,'teste.html'));
+});*/
+
+// Retorno da requisição como JSON
+server.get('/teste', (req, res) => {
+  //return res.json({ message : "Testando o teste testado"});
+  const user = req.query.user;
+  return res.json({
+    message : 'Bem-vindo',
+    user : `${user}`,
+    completo: `Bem-vindo usuario ${user}` 
+  });
+});
+// Ativando o servidor
+server.listen(3000);
